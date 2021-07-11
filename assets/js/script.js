@@ -1,0 +1,4 @@
+var headerEl = document.querySelector("#header");
+var sectionEl = document.querySelector("#section");
+var quizIdCounter = 0;
+
