@@ -16,8 +16,8 @@ a {
     margin-inline-end: 0px;
 }
 
-/*BEGIN QUIZ SECTION STYLES*/
-section {
+/*BEGIN QUIZ FORM STYLES*/
+form {
     margin: 50px;
     padding-left: 200px;
     padding-right: 200px;
@@ -25,11 +25,11 @@ section {
     text-align: center;
 }
 
-section p {
+form p {
     font-size: 25px;
 }
 
-section h1 {
+form h1 {
     font-size: 40px;
 }
 
