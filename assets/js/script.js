@@ -1,9 +1,10 @@
 var headerEl = document.querySelector("#header");
-var sectionEl = document.querySelector("#section");
+var formEl = document.querySelector("#form");
 var quizIdCounter = 0;
 
-var quizStart=function() {
+var quizStart = function() {
+    console.log("fu");
+};
 
-}
-
-var startQuiz=
+formEl.addEventListener("submit", quizStart);
+console.log("fu");
