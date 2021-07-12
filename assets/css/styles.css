@@ -41,9 +41,19 @@ form h1 {
     color: whitesmoke;
     box-shadow: 3px 3px gray;
     min-width: 10em;
+    margin: 5px;
 }
 
 .btn:hover, .btn:active {
     box-shadow: 2px 2px gray;
     cursor: pointer;
+}
+
+/*QUIZ STYLES*/
+#answers {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
