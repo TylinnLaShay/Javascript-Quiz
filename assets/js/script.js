@@ -2,6 +2,7 @@ var headerEl = document.querySelector("#header");
 var formEl = document.querySelector("#form");
 var answerEl = document.querySelector("#answer");
 var startButtonEl = document.querySelector("#btn");
+var answerDivEl = document.querySelector("#answers");
 var quizIdCounter = 0;
 var counterAnswer = 0;
 var questionEl = document.querySelector("#question");
@@ -81,15 +82,19 @@ var generateAnswers = function() {
     buttonEl.setAttribute("data-task-id", quizIdCounter);
     counterAnswer++;
     //appending each button to div
-
-    var buttonsEl = document.createElement("div");
-    buttonsEl.setAttribute("id", "btn");
-    buttonsEl.appendChild(buttonEl);
-    formEl.appendChild(buttonsEl);
+    answerDivEl.appendChild(buttonEl);
   }
 };
 
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
+}
 
 formEl.addEventListener("submit", function() {
+  if (quizIdCounter > 0) {
+    removeAllChildNodes(answerDivEl);
+  }
   generateQuestions();
 });
