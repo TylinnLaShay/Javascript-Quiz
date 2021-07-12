@@ -6,6 +6,7 @@ var startButtonEl = document.querySelector("#btn");
 var answerDivEl = document.querySelector("#answers");
 var questionEl = document.querySelector("#question");
 var viewScoresEl = document.querySelector("#tag");
+var correctEl = document.querySelector("#correct");
 
 //COUNTERS
 var quizIdCounter = 0;
@@ -105,12 +106,14 @@ var generateAnswers = function() {
     //records correct answers
       document.body.addEventListener('click', function(e){
       if(e.target.getAttribute("data-task-id") === correctAnswers[correctCounter]){
+      correctEl.innerHTML = ('Correct!');
       console.log('correct');
       correctCounter++;
       count = count + 10;
     }
     else {
       count = count - 10;
+      correctEl.innerHTML = (null);
     }
     });
 

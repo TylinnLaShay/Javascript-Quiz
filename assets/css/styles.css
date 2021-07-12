@@ -56,3 +56,9 @@ form h1 {
     flex-wrap: nowrap;
     justify-content: flex-start;
 }
+
+#correct {
+    font-style: italic;
+    font-weight: bolder;
+    color: rgb(14, 175, 41);
+}
