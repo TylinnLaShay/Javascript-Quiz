@@ -62,7 +62,8 @@ myQuestions.forEach(
     correctAnswers.push(currentQuestion.correctAnswer);
   }
 );
-//to remove previous buttons
+
+//function to remove previous buttons
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
       parent.removeChild(parent.firstChild);
@@ -99,11 +100,13 @@ var generateAnswers = function() {
     answerDivEl.appendChild(buttonEl);
   };
 };
-    //hopefully recording sometype of answer
+
+    //records correct answers
       document.body.addEventListener('click', function(e){
       if(e.target.getAttribute("data-task-id") === correctAnswers[correctCounter]){
       console.log('correct');
       correctCounter++;
+      count = count + 10;
     }
     });
 
@@ -122,11 +125,43 @@ var formEventHandler = function() {
 
 var endGame = function() {
   removeAllChildNodes(formEl);
+  //create element to show score
 
   var endDisplay = document.createElement('div');
   endDisplay.className = "end";
-  endDisplay.innerHTML = ("Your score is " + correctCounter);
+  endDisplay.id = 'end';
+  endDisplay.innerHTML = ((correctCounter + count));
+
   formEl.appendChild(endDisplay);
+  //create element to get userName
+
+  var userName = document.createElement('input');
+  userName.id = ('username');
+  var saveData = document.createElement('button');
+  saveData.className = "btn";
+  saveData.innerHTML = ('Save your score!');
+  formEl.appendChild(userName);
+  formEl.appendChild(saveData);
+
+//display scores
+  var highScores = function() {
+    removeAllChildNodes(formEl);
+    var high = document.createElement('div');
+    var name = localStorage.getItem('user-name');
+    var numbers = localStorage.getItem('score');
+    high.innerHTML = ("User " + name + ". " + "Score " + numbers);
+    formEl.appendChild(high);
+  }
+
+  //save to localStorage
+  saveData.addEventListener('click', function() {
+    var scoreName = document.getElementById('username').value;
+    var score = document.getElementById('end').innerHTML;
+    localStorage.setItem('score', score);
+    localStorage.setItem('user-name', scoreName);
+    highScores();
+  })
+
 }
 
 
@@ -140,3 +175,24 @@ formEl.addEventListener("submit", function() {
   }
   formEventHandler();
 });
+
+//timer only
+var count=30;
+
+var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
+
+function timer()
+{
+  count=count-1;
+  if (count <= 0)
+  {
+     clearInterval(counter);
+     endGame();
+     return;
+  }
+  else if (clicks > myQuestions.length) {
+    return;
+  }
+
+  document.getElementById("#timer").innerHTML=count + " seconds";
+}
