@@ -8,7 +8,10 @@ To test user knowledge of JavaScript
 * CSS
 * JS
 ## Website
-https://tylinnlashay.github.io/Javascript-Quiz/
+![image](https://user-images.githubusercontent.com/84997566/125283134-f8c81500-e2cc-11eb-88d3-6087ded4f653.png)
+
+## Screenshot
+file:///C:/Users/tylin/Desktop/Javascript-Quiz/index.html
 
 ## Contribution
 Made with :heart: by Tylinn
