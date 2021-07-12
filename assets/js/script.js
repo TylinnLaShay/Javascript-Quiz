@@ -108,6 +108,9 @@ var generateAnswers = function() {
       correctCounter++;
       count = count + 10;
     }
+    else {
+      count = count - 10;
+    }
     });
 
 var formEventHandler = function() {
@@ -148,8 +151,8 @@ var endGame = function() {
     removeAllChildNodes(formEl);
     var high = document.createElement('div');
     var name = localStorage.getItem('user-name');
-    var numbers = localStorage.getItem('score');
-    high.innerHTML = ("User " + name + ". " + "Score " + numbers);
+    var numbers = localStorage.getItem('highscore');
+    high.innerHTML = ("User " + name + ". " + "With highscore of " + numbers);
     formEl.appendChild(high);
   }
 
@@ -157,7 +160,16 @@ var endGame = function() {
   saveData.addEventListener('click', function() {
     var scoreName = document.getElementById('username').value;
     var score = document.getElementById('end').innerHTML;
-    localStorage.setItem('score', score);
+    var highscore = localStorage.getItem("highscore");
+
+    if(highscore !== null){
+    if (score > highscore) {
+        localStorage.setItem("highscore", score);      
+      }
+    } 
+    else{
+      localStorage.setItem("highscore", score);
+    }
     localStorage.setItem('user-name', scoreName);
     highScores();
   })
@@ -177,7 +189,7 @@ formEl.addEventListener("submit", function() {
 });
 
 //timer only
-var count=30;
+var count=40;
 
 var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
 
