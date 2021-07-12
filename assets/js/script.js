@@ -5,6 +5,7 @@ var answerEl = document.querySelector("#answer");
 var startButtonEl = document.querySelector("#btn");
 var answerDivEl = document.querySelector("#answers");
 var questionEl = document.querySelector("#question");
+var viewScoresEl = document.querySelector("#tag");
 
 //COUNTERS
 var quizIdCounter = 0;
@@ -209,3 +210,14 @@ function timer()
 
   document.getElementById("#timer").innerHTML=count + " seconds";
 }}
+
+
+//to get to highscores page
+viewScoresEl.addEventListener("click", function(){
+  removeAllChildNodes(formEl);
+  var high = document.createElement('div');
+  var name = localStorage.getItem('user-name');
+  var numbers = localStorage.getItem('highscore');
+  high.innerHTML = ("User " + name + ". " + "With highscore of " + numbers);
+  formEl.appendChild(high);
+});
