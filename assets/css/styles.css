@@ -40,6 +40,7 @@ form h1 {
     border-radius: 5px;
     color: whitesmoke;
     box-shadow: 3px 3px gray;
+    min-width: 10em;
 }
 
 .btn:hover, .btn:active {

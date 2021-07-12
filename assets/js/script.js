@@ -3,7 +3,7 @@ var formEl = document.querySelector("#form");
 var answerEl = document.querySelector("#answer");
 var startButtonEl = document.querySelector("#btn");
 var quizIdCounter = 0;
-//var correctAnswer = 0
+var counterAnswer = 0;
 var questionEl = document.querySelector("#question");
 const myQuestions = [
   {
@@ -29,13 +29,28 @@ const myQuestions = [
     answers: {
       a: "Angular",
       b: "jQuery",
-      c: "RequireJS",
-      d: "ESLint"
+      c: "ESLint",
     },
-    correctAnswer: "d"
+    correctAnswer: "c"
   }
 ];
+// variable to store the list of possible answers
+const answers = [];
+const question = [];
 
+// for each question...
+myQuestions.forEach(
+  (currentQuestion, quizIdCounter) => {
+
+    // and for each available answer...
+    for(letter in currentQuestion.answers){
+      answers.push(currentQuestion.answers[letter]);
+    }
+
+    // add this question and its answers to the output
+    question.push(currentQuestion.question);
+  }
+);
 
 
 
@@ -45,23 +60,32 @@ var generateQuestions = function() {
 
   if (quizIdCounter < myQuestions.length) {
         
-    var newQuestion = myQuestions[quizIdCounter];
+    var newQuestion = question[quizIdCounter];
     questionEl.innerHTML = (newQuestion);
 
   }
-  var myAnswers = 
   quizIdCounter++;
   generateAnswers();
 }
 
-var generateAnswers = function(quizIdCounter) {
-  for (let i = 0; i < myAnswers.length; i++) {
+var generateAnswers = function() {
+  for (let i = 0; i < myQuestions.length; i++) {
 
     var buttonEl = document.createElement("button");
-    buttonEl.innerHTML = (myAnswers[i]);
+    var newAnswer = answers[counterAnswer];
+
+    //creating answer buttons
+
+    buttonEl.innerHTML = (newAnswer);
     buttonEl.className = "btn";
     buttonEl.setAttribute("data-task-id", quizIdCounter);
-    formEl.appendChild(buttonEl);
+    counterAnswer++;
+    //appending each button to div
+
+    var buttonsEl = document.createElement("div");
+    buttonsEl.setAttribute("id", "btn");
+    buttonsEl.appendChild(buttonEl);
+    formEl.appendChild(buttonsEl);
   }
 };
 
