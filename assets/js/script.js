@@ -159,19 +159,20 @@ var endGame = function() {
 
   //save to localStorage
   saveData.addEventListener('click', function() {
+    event.preventDefault();
     var scoreName = document.getElementById('username').value;
     var score = document.getElementById('end').innerHTML;
     var highscore = localStorage.getItem("highscore");
 
     if(highscore !== null){
     if (score > highscore) {
-        localStorage.setItem("highscore", score);      
+        localStorage.setItem("highscore", score);
+        localStorage.setItem('user-name', scoreName);      
       }
     } 
     else{
       localStorage.setItem("highscore", score);
     }
-    localStorage.setItem('user-name', scoreName);
     highScores();
   })
 
