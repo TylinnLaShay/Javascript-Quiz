@@ -117,6 +117,16 @@ var formEventHandler = function() {
     document.querySelector("#answer").remove();
     generateQuestions();
   }
+
+}
+
+var endGame = function() {
+  removeAllChildNodes(formEl);
+
+  var endDisplay = document.createElement('div');
+  endDisplay.className = "end";
+  endDisplay.innerHTML = ("Your score is " + correctCounter);
+  formEl.appendChild(endDisplay);
 }
 
 
@@ -124,9 +134,9 @@ var formEventHandler = function() {
 formEl.addEventListener("submit", function() {
   event.preventDefault();
   clicks++;
-  if (clicks > myQuestions.length + 1) {
+  if (clicks > myQuestions.length) {
     console.log("Your score is" + correctCounter);
-
+    endGame();
   }
   formEventHandler();
 });
